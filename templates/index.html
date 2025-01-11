@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Emotion Recognition</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #f6f8fa;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px 20px;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #0077ff;
+      }
+
+      .hero-content {
+        max-width: 500px;
+        text-align: center;
+      }
+
+      .hero-content h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #0077ff;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      .hero-content .cta-button {
+        background: #0077ff;
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+        padding: 15px 30px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 119, 255, 0.3);
+      }
+
+      .cta-button:hover {
+        background: #0056b3;
+        box-shadow: 0 6px 15px rgba(0, 119, 255, 0.5);
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 50px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .feature {
+        background: #ffffff;
+        border-radius: 15px;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .feature img {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+      }
+
+      .feature h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #0077ff;
+      }
+
+      .button-primary {
+        background: #0077ff;
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+        padding: 9px 30px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 119, 255, 0.3);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="hero">
+      <div class="hero-content">
+        <h2>Face Emotion Recognition</h2>
+        <p>
+          Explore real-time emotion analysis using advanced technology. Upload
+          images or use real-time detection now!
+        </p>
+        <a href="#features" class="cta-button">Get Started</a>
+      </div>
+    </div>
+
+    <section id="features" class="features">
+      <div class="feature">
+        <img src="static/images/cam.png" alt="Real-Time" />
+        <h3>Real-Time Detection</h3>
+        <p>Analyze emotions in real-time with cutting-edge technology.</p>
+        <form action="/RealTime" method="post">
+          <input type="submit" value="Start" class="button-primary" />
+        </form>
+      </div>
+      <div class="feature">
+        <img src="static/images/upload.jpg" alt="Image Upload" />
+        <h3>Image Analysis</h3>
+        <p>Upload images and get instant emotion detection results.</p>
+        <form action="/ImageUpload" method="post">
+          <input type="submit" value="Start" class="button-primary" />
+        </form>
+      </div>
+      <div class="feature">
+        <img src="static/images/url.png" alt="URL Analysis" />
+        <h3>Analyze via URL</h3>
+        <p>Provide an image URL for fast and accurate emotion detection.</p>
+        <form action="/UrlUpload" method="post">
+          <input type="submit" value="Start" class="button-primary" />
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
