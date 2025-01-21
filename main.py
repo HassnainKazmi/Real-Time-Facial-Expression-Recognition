@@ -73,14 +73,16 @@ def gen_frames():  # generate frame by frame from camera
                 # find max indexed array
                 # max_index = np.argmax(predictions[0])
 
-                emotions = ("Angry", "Disgust",
-                            "Fear", "Happy",
-                            "Neutral", "Sad",
-                            "Surprise")
+                emotions = ("Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise")
                 predicted_emotion = emotions[np.argmax(predictions)]
 
-                rec_col = {"Happy": (0, 255, 0), "Sad": (255, 0, 0), "Surprise": (255, 204, 55),
-                           "Angry": (0, 0, 255), "Neutral": (0, 255, 255)}
+                rec_col = {"Happy": (0, 255, 0),
+                           "Sad": (255, 0, 0),
+                           "Surprise": (255, 204, 55),
+                           "Angry": (0, 0, 255),
+                           "Disgust": (230, 159, 0),
+                           "Neutral": (0, 255, 255),
+                           "Fear": (128, 0, 128)}
 
                 # Defining the Parameters for putting Text on Image
                 Text = str(predicted_emotion)
