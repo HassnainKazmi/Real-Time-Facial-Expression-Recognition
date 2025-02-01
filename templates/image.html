@@ -9,7 +9,6 @@
       rel="stylesheet"
     />
     <style>
-      /* Base Styles */
       body {
         margin: 0;
         font-family: "Poppins", sans-serif;
@@ -24,93 +23,37 @@
         transition: background-color 0.3s ease, color 0.3s ease;
       }
 
-      .dark-mode {
-        background: #121212;
-        color: #e0e0e0;
-      }
-
-      header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 50px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .dark-mode header {
-        background: rgba(18, 18, 18, 0.9);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      }
-
-      header h1 {
-        font-size: 1.8rem;
-        color: #0077ff;
-      }
-
-      .dark-mode header h1 {
-        color: #90caf9;
-      }
-
-      header .dark-mode-toggle {
-        background: transparent;
-        border: 2px solid #0077ff;
-        color: #0077ff;
-        padding: 10px 15px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-      }
-
-      .dark-mode header .dark-mode-toggle {
-        border-color: #90caf9;
-        color: #90caf9;
-      }
-
-      header .dark-mode-toggle:hover {
-        background: #0077ff;
-        color: #fff;
-      }
-
-      .dark-mode header .dark-mode-toggle:hover {
-        background: #90caf9;
-        color: #000;
-      }
-
       .hero {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
-        padding: 0 30px;
-        gap: 30px;
+        text-align: center;
+        padding: 10px 20px;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #0077ff;
       }
 
       .drag-area {
         border: 2px dashed #808080;
-        height: 350px;
-        width: 850px;
+        height: 450px;
+        width: 700px;
         border-radius: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         margin: auto;
-        margin-top: 200px;
-      }
-
-      .dark-mode .drag-area {
-        border: 2px dashed #90caf9;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
       }
 
       .drag-area input[type="file"] {
-        margin-top: 15px;
         padding: 10px 20px;
         font-size: 1rem;
         border: none;
@@ -140,28 +83,12 @@
       .drag-area input[type="submit"]:hover {
         background: #0056b3;
       }
-
-      footer {
-        margin-top: 50px;
-        text-align: center;
-        font-size: 0.9rem;
-        color: #777;
-      }
-
-      .dark-mode footer {
-        color: #aaa;
-      }
     </style>
   </head>
 
   <body>
-    <header>
-      <h1>Emotion Detector</h1>
-      <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-        Toggle Dark Mode
-      </button>
-    </header>
-    <div class="hero">
+    <section class="hero">
+      <h2>Image Analysis</h2>
       <div class="drag-area">
         <h3>Upload an image from your system</h3>
         <form action="/uploadimage" method="post" enctype="multipart/form-data">
@@ -169,16 +96,7 @@
           <input type="submit" value="Upload" />
         </form>
       </div>
-    </div>
-    <footer>
-      <p>&copy; 2025 Emotion Recognition. Built with ❤️ for you.</p>
-    </footer>
-
-    <script>
-      function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-      }
-    </script>
+    </section>
     <script src="static/js/main.min.js"></script>
   </body>
 </html>
