@@ -50,12 +50,19 @@ def gen_frames():
                 predictions = model.predict(img_pixels)
                 emotions = ("Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise")
                 predicted_emotion = emotions[np.argmax(predictions)]
-                rec_col = {"Happy": (0, 255, 0), "Sad": (255, 0, 0), "Surprise": (255, 204, 55), "Angry": (0, 0, 255),
-                           "Disgust": (230, 159, 0), "Neutral": (0, 255, 255), "Fear": (128, 0, 128)}
+                rec_col = {
+                    "Happy": (255, 223, 0),  # Bright Yellow
+                    "Sad": (30, 144, 255),  # Deep Blue
+                    "Surprise": (255, 140, 0),  # Vibrant Orange
+                    "Angry": (204, 0, 0),  # Fiery Red
+                    "Disgust": (85, 107, 47),  # Dark Green
+                    "Neutral": (169, 169, 169),  # Soft Gray
+                    "Fear": (75, 0, 130)  # Dark Violet
+                }
                 Text = str(predicted_emotion)
                 cv2.rectangle(test_img, (x, y), (x + w, y + h), rec_col[str(predicted_emotion)], 2)
                 cv2.rectangle(test_img, (x, y - 40), (x + w, y), rec_col[str(predicted_emotion)], -1)
-                cv2.putText(test_img, Text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 2)
+                cv2.putText(test_img, Text, (x + 10, y - 10), cv2.FONT_HERSHEY_COMPLEX, 0.8, (0, 0, 0), 2)
             resized_img = cv2.resize(test_img, (1000, 700))
             ret, buffer = cv2.imencode('.jpg', test_img)
             frame = buffer.tobytes()
@@ -86,13 +93,20 @@ def Emotion_Analysis(img):
         roi = cv2.resize(roi, (48, 48))
         prediction = model.predict(roi[np.newaxis, :, :, np.newaxis])
         EMOTIONS_LIST = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
-        rec_col = {"Happy": (0, 255, 0), "Sad": (255, 0, 0), "Surprise": (255, 204, 55), "Angry": (0, 0, 255),
-                   "Disgust": (230, 159, 0), "Neutral": (0, 255, 255), "Fear": (128, 0, 128)}
+        rec_col = {
+            "Happy": (255, 223, 0),  # Bright Yellow
+            "Sad": (30, 144, 255),  # Deep Blue
+            "Surprise": (255, 140, 0),  # Vibrant Orange
+            "Angry": (204, 0, 0),  # Fiery Red
+            "Disgust": (85, 107, 47),  # Dark Green
+            "Neutral": (169, 169, 169),  # Soft Gray
+            "Fear": (75, 0, 130)  # Dark Violet
+        }
         pred_emotion = EMOTIONS_LIST[np.argmax(prediction)]
         Text = str(pred_emotion)
         cv2.rectangle(image, (x, y), (x + w, y + h), rec_col[str(pred_emotion)], 2)
         cv2.rectangle(image, (x, y - 40), (x + w, y), rec_col[str(pred_emotion)], 2)
-        cv2.putText(image, Text, (x, y - 10), cv2.FONT_HERSHEY_TRIPLEX, 1, (0, 0, 0), 2)
+        cv2.putText(image, Text, (x, y - 10), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2)
         path = "static/" + "pred" + str(img)
         cv2.imwrite(path, image)
     return ([img, "pred" + img, pred_emotion])
